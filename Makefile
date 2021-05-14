@@ -12,7 +12,7 @@ clean:
 
 build: $(SRC)
 	nbdev_build_lib
-	touch elab-2-team2
+	touch build
 
 sync:
 	nbdev_update_lib
