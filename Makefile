@@ -12,7 +12,6 @@ clean:
 
 build: $(SRC)
 	nbdev_build_lib
-	touch build
 
 sync:
 	nbdev_update_lib
@@ -22,7 +21,6 @@ docs_serve: docs
 
 docs: $(SRC)
 	nbdev_build_docs
-	touch docs
 
 test:
 	nbdev_test_nbs
@@ -41,3 +39,18 @@ dist: rm_dist
 
 rm_dist:
 	rm -rf dist
+
+.PHONY: \
+	all \
+	diff \
+	clean \
+	build \
+	sync \
+	docs_serve \
+	docs \
+	test \
+	release \
+	conda_release \
+	pypi \
+	dist \
+	rm_dist
