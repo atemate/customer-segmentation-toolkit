@@ -2,13 +2,16 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"load_csv": "01_df_split_offline_online.ipynb",
-         "split_offline_online": "01_df_split_offline_online.ipynb",
-         "DATE_SPLIT": "01_df_split_offline_online.ipynb",
-         "clean_data": "02_df_clean_rows.ipynb"}
+index = {"load_csv": "01_data_split_offline_online.ipynb",
+         "split_offline_online": "01_data_split_offline_online.ipynb",
+         "DATE_SPLIT": "01_data_split_offline_online.ipynb",
+         "clean_drop_na": "02_data_clean_rows.ipynb",
+         "clean_drop_duplicates": "02_data_clean_rows.ipynb",
+         "clean_remove_bad_order_cancellations": "02_data_clean_rows.ipynb",
+         "clean_rows": "02_data_clean_rows.ipynb"}
 
-modules = ["df/load_split.py",
-           "dataframe/split.py"]
+modules = ["data/load_split.py",
+           "data/clean_rows.py"]
 
 doc_url = "https://team2.github.io/elab2team2/"
 

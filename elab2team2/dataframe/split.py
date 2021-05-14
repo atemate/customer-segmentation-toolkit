@@ -50,9 +50,9 @@ def clean_data(df: pd.DataFrame) -> pd.DataFrame:
     df_cleaned.drop(entry_to_remove, axis=0, inplace=True)
     df_cleaned.drop(doubtfull_entry, axis=0, inplace=True)
 
-    remaining_entries = df_cleaned[(df_cleaned['Quantity'] < 0) & (df_cleaned['StockCode'] != 'D')]
-    logging.info("nb of entries to delete: {}".format(remaining_entries.shape[0]))
-    logging.info(str(remaining_entries[:5]))
+    #remaining_entries = df_cleaned[(df_cleaned['Quantity'] < 0) & (df_cleaned['StockCode'] != 'D')]
+    #logging.info("nb of entries to delete: {}".format(remaining_entries.shape[0]))
+    #logging.info(str(remaining_entries[:5]))
 
     df_cleaned['TotalPrice'] = df_cleaned['UnitPrice'] * (df_cleaned['Quantity'] - df_cleaned['QuantityCanceled'])
     logging.info(str(df_cleaned.sort_values('CustomerID')[:5]))

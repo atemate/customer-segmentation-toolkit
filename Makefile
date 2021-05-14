@@ -2,9 +2,15 @@
 SHELL := /bin/bash
 SRC = $(wildcard nbs/*.ipynb)
 
-all: elab-2-team2 docs
+all: build docs
 
-elab-2-team2: $(SRC)
+diff:
+	nbdev_diff_nbs
+
+clean_nbs:
+	nbdev_clean_nbs
+
+build: $(SRC)
 	nbdev_build_lib
 	touch elab-2-team2
 
@@ -21,7 +27,7 @@ docs: $(SRC)
 test:
 	nbdev_test_nbs
 
-release: pypi conda_release
+release: pypi #conda_release
 	nbdev_bump_version
 
 conda_release:
