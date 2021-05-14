@@ -7,7 +7,7 @@ all: build docs
 diff:
 	nbdev_diff_nbs
 
-clean_nbs:
+clean:
 	nbdev_clean_nbs
 
 build: $(SRC)
@@ -36,8 +36,8 @@ conda_release:
 pypi: dist
 	twine upload --repository pypi dist/*
 
-dist: clean
+dist: rm_dist
 	python setup.py sdist bdist_wheel
 
-clean:
+rm_dist:
 	rm -rf dist
