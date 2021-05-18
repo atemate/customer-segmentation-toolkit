@@ -1,5 +1,5 @@
 {
-  "elab2team2": {
+  "featurologists": {
     "Overview": "/",
     "Load and split dataset": "data_split_offline_online.html",
     "Clean dataset": "data_clean_rows.html"

@@ -47,7 +47,7 @@ nb_path: "nbs/02_data_clean_rows.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="clean_drop_na" class="doc_header"><code>clean_drop_na</code><a href="https://github.com/artemlops/elab2team2/tree/master/elab2team2/data/clean_rows.py#L11" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>clean_drop_na</code>(<strong><code>df</code></strong>:<code>DataFrame</code>)</p>
+<h4 id="clean_drop_na" class="doc_header"><code>clean_drop_na</code><a href="https://github.com/artemlops/elab-2-team2/tree/master/featurologists/data/clean_rows.py#L11" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>clean_drop_na</code>(<strong><code>df</code></strong>:<code>DataFrame</code>)</p>
 </blockquote>
 
 </div>
@@ -71,7 +71,7 @@ nb_path: "nbs/02_data_clean_rows.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="clean_drop_duplicates" class="doc_header"><code>clean_drop_duplicates</code><a href="https://github.com/artemlops/elab2team2/tree/master/elab2team2/data/clean_rows.py#L15" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>clean_drop_duplicates</code>(<strong><code>df</code></strong>:<code>DataFrame</code>)</p>
+<h4 id="clean_drop_duplicates" class="doc_header"><code>clean_drop_duplicates</code><a href="https://github.com/artemlops/elab-2-team2/tree/master/featurologists/data/clean_rows.py#L15" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>clean_drop_duplicates</code>(<strong><code>df</code></strong>:<code>DataFrame</code>)</p>
 </blockquote>
 
 </div>
@@ -102,7 +102,7 @@ nb_path: "nbs/02_data_clean_rows.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="clean_remove_bad_order_cancellations" class="doc_header"><code>clean_remove_bad_order_cancellations</code><a href="https://github.com/artemlops/elab2team2/tree/master/elab2team2/data/clean_rows.py#L21" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>clean_remove_bad_order_cancellations</code>(<strong><code>df</code></strong>:<code>DataFrame</code>)</p>
+<h4 id="clean_remove_bad_order_cancellations" class="doc_header"><code>clean_remove_bad_order_cancellations</code><a href="https://github.com/artemlops/elab-2-team2/tree/master/featurologists/data/clean_rows.py#L21" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>clean_remove_bad_order_cancellations</code>(<strong><code>df</code></strong>:<code>DataFrame</code>)</p>
 </blockquote>
 <p>Returns a copy of <code>df</code> that doesn't include the following orders:</p>
 <ol>
@@ -139,7 +139,7 @@ NOTE: time complexity is O(n).</li>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="clean_rows" class="doc_header"><code>clean_rows</code><a href="https://github.com/artemlops/elab2team2/tree/master/elab2team2/data/clean_rows.py#L78" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>clean_rows</code>(<strong><code>df</code></strong>:<code>DataFrame</code>)</p>
+<h4 id="clean_rows" class="doc_header"><code>clean_rows</code><a href="https://github.com/artemlops/elab-2-team2/tree/master/featurologists/data/clean_rows.py#L78" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>clean_rows</code>(<strong><code>df</code></strong>:<code>DataFrame</code>)</p>
 </blockquote>
 
 </div>
@@ -166,9 +166,9 @@ NOTE: time complexity is O(n).</li>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">elab2team2.data.load_split</span> <span class="kn">import</span> <span class="n">load_csv</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">featurologists.data.load_split</span> <span class="kn">import</span> <span class="n">load_csv</span>
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">load_csv</span><span class="p">(</span><span class="s1">&#39;../data/01_df_split_offline_online/no_live_data.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">load_csv</span><span class="p">(</span><span class="s1">&#39;../data/01_data_split_offline_online/no_live_data.csv&#39;</span><span class="p">)</span>
 <span class="n">clean_rows</span><span class="p">(</span><span class="n">df</span><span class="p">[:</span><span class="mi">1000</span><span class="p">])</span>
 </pre></div>
 
@@ -182,7 +182,9 @@ NOTE: time complexity is O(n).</li>
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>INFO:root:entry_to_remove: 1
+<pre>INFO:numexpr.utils:Note: NumExpr detected 12 cores but &#34;NUMEXPR_MAX_THREADS&#34; not set, so enforcing safe limit of 8.
+INFO:numexpr.utils:NumExpr defaulting to 8 threads.
+INFO:root:entry_to_remove: 1
 INFO:root:doubtfull_entry: 8
 INFO:root:nb of entries to delete: 0
 INFO:root:Empty DataFrame
