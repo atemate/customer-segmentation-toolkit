@@ -1,7 +1,7 @@
 {
   "elab2team2": {
     "Overview": "/",
-    "Load and split dataset": "df_split_offline_online.html",
-    "Clean dataset": "df_clean_rows.html"
+    "Load and split dataset": "data_split_offline_online.html",
+    "Clean dataset": "data_clean_rows.html"
   }
 }
