@@ -13,8 +13,8 @@ index = {"load_csv": "01_data_split_offline_online.ipynb",
 modules = ["data/load_split.py",
            "data/clean_rows.py"]
 
-doc_url = "https://team2.github.io/elab2team2/"
+doc_url = "https://featurologists-team.github.io/featurologists/"
 
-git_url = "https://github.com/artemlops/elab2team2/tree/master/"
+git_url = "https://github.com/artemlops/elab-2-team2/tree/master/"
 
 def custom_doc_links(name): return None
