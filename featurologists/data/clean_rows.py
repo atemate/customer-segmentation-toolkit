@@ -58,15 +58,17 @@ def clean_remove_bad_order_cancellations(df: pd.DataFrame) -> pd.DataFrame:
                 entry_to_remove.append(index)
                 break
 
-    logging.info("entry_to_remove: {}".format(len(entry_to_remove)))
-    logging.info("doubtfull_entry: {}".format(len(doubtfull_entry)))
+    #logging.info("entry_to_remove: {}".format(len(entry_to_remove)))
+    #logging.info("doubtfull_entry: {}".format(len(doubtfull_entry)))
 
     df_cleaned.drop(entry_to_remove, axis=0, inplace=True)
     df_cleaned.drop(doubtfull_entry, axis=0, inplace=True)
 
     remaining_entries = df_cleaned[(df_cleaned['Quantity'] < 0) & (df_cleaned['StockCode'] != 'D')]
-    logging.info("nb of entries to delete: {}".format(remaining_entries.shape[0]))
-    logging.info(str(remaining_entries[:5]))
+    #logging.info("nb of entries to delete: {}".format(remaining_entries.shape[0]))
+    #logging.info(str(remaining_entries[:5]))
+
+    df_cleaned['TotalPrice'] = df_cleaned['UnitPrice'] * (df_cleaned['Quantity'] - df_cleaned['QuantityCanceled'])
 
     return df_cleaned
 
