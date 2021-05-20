@@ -9,12 +9,14 @@ index = {"load_csv": "01_data_split_offline_online.ipynb",
          "clean_drop_duplicates": "02_data_clean_rows.ipynb",
          "clean_remove_bad_order_cancellations": "02_data_clean_rows.ipynb",
          "clean_rows": "02_data_clean_rows.ipynb",
-         "compute_product_list": "03_data_analyse_product_descritions.ipynb",
-         "display_list_products": "03_data_analyse_product_descritions.ipynb"}
+         "build_product_list": "03_data_analyse_keywords.ipynb",
+         "plot_product_list_histogram": "03_data_analyse_keywords.ipynb",
+         "build_keywords_matrix": "03_data_analyse_keywords.ipynb",
+         "display_keywords_matrix": "03_data_analyse_keywords.ipynb"}
 
 modules = ["data/load_split.py",
            "data/clean_rows.py",
-           "data/analyse_product_descritions.py"]
+           "data/analyse_keywords.py"]
 
 doc_url = "https://featurologists-team.github.io/featurologists/"
 
