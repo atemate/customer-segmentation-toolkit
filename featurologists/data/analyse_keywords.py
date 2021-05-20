@@ -107,7 +107,7 @@ def build_keywords_matrix(
 
     X = pd.DataFrame()
     for key, occurence in list_products:
-        X.loc[:, key] = list(map(lambda x:int(key.upper() in x), liste_produits))
+        X.loc[:, key] = list(map(lambda x: int(key.upper() in x), liste_produits))
 
     label_col = []
     for i in range(len(threshold)):

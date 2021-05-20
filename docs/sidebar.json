@@ -2,6 +2,7 @@
   "featurologists": {
     "Overview": "/",
     "Load and split dataset": "data_split_offline_online.html",
-    "Clean dataset": "data_clean_rows.html"
+    "Clean dataset rows": "data_clean_rows.html",
+    "Analyse keywords in product descriptions": "data_analyse_keywords.html"
   }
 }

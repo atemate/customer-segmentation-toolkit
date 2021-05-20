@@ -13,8 +13,11 @@ entries:
       title: Load and split dataset
       url: data_split_offline_online.html
     - output: web,pdf
-      title: Clean dataset
+      title: Clean dataset rows
       url: data_clean_rows.html
+    - output: web,pdf
+      title: Analyse keywords in product descriptions
+      url: data_analyse_keywords.html
     output: web
     title: featurologists
   output: web
