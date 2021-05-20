@@ -68,10 +68,7 @@ def clean_remove_bad_order_cancellations(df: pd.DataFrame) -> pd.DataFrame:
     logging.info("nb of entries to delete: {}".format(remaining_entries.shape[0]))
     logging.info(str(remaining_entries[:5]))
 
-    df_cleaned['TotalPrice'] = df_cleaned['UnitPrice'] * (df_cleaned['Quantity'] - df_cleaned['QuantityCanceled'])
-    logging.info(str(df_cleaned.sort_values('CustomerID')[:5]))
-
-    return df
+    return df_cleaned
 
 # Cell
 
