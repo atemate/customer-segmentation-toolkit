@@ -11,6 +11,7 @@ clean:
 	nbdev_clean_nbs
 
 build: $(SRC)
+	rm -r ./featurologists
 	nbdev_build_lib
 
 sync:
