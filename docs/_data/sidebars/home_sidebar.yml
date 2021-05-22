@@ -16,8 +16,11 @@ entries:
       title: Clean dataset rows
       url: data_clean_rows.html
     - output: web,pdf
-      title: Analyse keywords in product descriptions
-      url: data_analyse_keywords.html
+      title: Analyse purchases
+      url: data_analyse_purchases.html
+    - output: web,pdf
+      title: Analyse customers
+      url: data_analyse_customers.html
     output: web
     title: featurologists
   output: web
