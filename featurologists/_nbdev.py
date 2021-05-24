@@ -2,24 +2,37 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"load_csv": "01_data_split_offline_online.ipynb",
-         "split_offline_online": "01_data_split_offline_online.ipynb",
+index = {"load_data_csv": "01_data_split_offline_online.ipynb",
+         "split_by_invoice_date": "01_data_split_offline_online.ipynb",
          "DATE_SPLIT": "01_data_split_offline_online.ipynb",
          "clean_drop_na": "02_data_clean_rows.ipynb",
          "clean_drop_duplicates": "02_data_clean_rows.ipynb",
          "clean_remove_bad_order_cancellations": "02_data_clean_rows.ipynb",
          "clean_data_rows": "02_data_clean_rows.ipynb",
-         "build_product_list": "03_data_analyse_keywords.ipynb",
-         "plot_product_list_histogram": "03_data_analyse_keywords.ipynb",
-         "build_keywords_matrix": "03_data_analyse_keywords.ipynb",
-         "display_keywords_matrix": "03_data_analyse_keywords.ipynb"}
+         "build_product_list": "03_data_analyse_purchases.ipynb",
+         "plot_product_list_histogram": "03_data_analyse_purchases.ipynb",
+         "build_keywords_matrix": "03_data_analyse_purchases.ipynb",
+         "display_keywords_matrix": "03_data_analyse_purchases.ipynb",
+         "compute_purchase_clusters": "03_data_analyse_purchases.ipynb",
+         "plot_silhouette": "03_data_analyse_purchases.ipynb",
+         "add_purchase_clusters_info": "03_data_analyse_purchases.ipynb",
+         "build_transactions_per_user": "04_data_analyse_customers.ipynb",
+         "compute_n_customers_with_unique_purchase": "04_data_analyse_customers.ipynb",
+         "convert_customers_df_to_np": "04_data_analyse_customers.ipynb",
+         "analyse_customers_pca": "04_data_analyse_customers.ipynb",
+         "plot_customers_pca": "04_data_analyse_customers.ipynb",
+         "compute_customer_clusters": "04_data_analyse_customers.ipynb",
+         "plot_customer_categories": "04_data_analyse_customers.ipynb",
+         "add_customer_clusters_info": "04_data_analyse_customers.ipynb",
+         "compute_aggregated_customer_clusters_info": "04_data_analyse_customers.ipynb"}
 
 modules = ["data/load_split.py",
            "data/clean_rows.py",
-           "data/analyse_keywords.py"]
+           "data/analyse_purchases.py",
+           "data/analyse_customers.py"]
 
 doc_url = "https://featurologists-team.github.io/featurologists/"
 
-git_url = "https://github.com/artemlops/elab-2-team2/tree/master/"
+git_url = "https://github.com/artemlops/featurologists/tree/master/"
 
 def custom_doc_links(name): return None
