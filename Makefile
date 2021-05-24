@@ -21,6 +21,7 @@ docs_serve: docs
 	cd docs && bundle exec jekyll serve
 
 docs: $(SRC)
+	rm -rf docs && mkdir docs
 	nbdev_build_docs
 
 test:
