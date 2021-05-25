@@ -36,5 +36,3 @@ jobs:
     - name: Run tests
       run: |
         make test
-        echo "Checking that the output data produced by the tests is fully committed to Git"
-        if [ -n "$(git status -uno -s ./data)" ]; then echo -e "!!! Detected changed data\n!!!Please run `make test` and commit changes in data"; false; fi
