@@ -174,7 +174,7 @@ def compute_aggregated_customer_clusters_info(
     selected_customers: pd.DataFrame,
     n_purchase_clusters: int,
     n_customer_clusters: int,
-    categ_threshold: int = 40,
+    categ_threshold: int = 35,
 ):
     merged_df = pd.DataFrame()
     for i in range(n_customer_clusters):
@@ -190,7 +190,8 @@ def compute_aggregated_customer_clusters_info(
     liste_index = []
     for i in range(n_purchase_clusters):
         column = 'categ_{}'.format(i)
-        # XXX: Here we changed the constant: 45 -> categ_threshold (see check 'merged_df[column] > 40' below)
+        # XXX: Here we changed the constant: 45 -> categ_threshold
+        # Otherwise we get: IndexError: index 0 is out of bounds for axis 0 with size 0
         liste_index.append(merged_df[merged_df[column] > categ_threshold].index.values[0])
     liste_index_reordered = liste_index
     set_index = set(liste_index)
