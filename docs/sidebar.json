@@ -1,5 +1,5 @@
 {
-  "featurologists": {
+  "customer_segmentation_toolkit": {
     "Overview": "/",
     "Load and split dataset": "data_split_offline_online.html",
     "Clean dataset rows": "data_clean_rows.html",

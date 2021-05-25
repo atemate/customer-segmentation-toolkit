@@ -22,6 +22,6 @@ entries:
       title: Analyse customers
       url: data_analyse_customers.html
     output: web
-    title: featurologists
+    title: customer_segmentation_toolkit
   output: web
   title: Sidebar

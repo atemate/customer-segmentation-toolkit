@@ -1,10 +1,15 @@
-# Featurologists
-> Data transformations toolkit made by team 2 at Engineering Labs #2 "Feature Store for ML"
+# Customer segmentation toolkit
+> Data transformations toolkit made by Team #2 for the <a href='https://github.com/mlopscommunity/engineering.labs/tree/master/Lab2_Feature_Store_for_ML'>MLOps Engineering Lab #2</a> "Feature Store for ML".
 
+
+- Original notebook: [Customer segmentation](https://www.kaggle.com/fabiendaniel/customer-segmentation) by F. Daniel (September 2017) (saved to `../data/customer-segmentation.ipynb`).
+- Original dataset: [E-Commerce data: Actual transactions from UK retailer](https://www.kaggle.com/carrie1/ecommerce-data) (saved to `../data/data.csv`).
+
+The work is done with the help of the [nbdev](https://nbdev.fast.ai/) tool, which allows you to develop a python library in Jupyter Notebooks, putting all your code, tests and documentation in one place.
 
 ## Installation
 
-`pip install -U git+https://github.com/artemlops/featurologists.git@master`
+`pip install -U git+https://github.com/artemlops/customer-segmentation-toolkit.git@master`
 
 ## Usage
 
@@ -17,7 +22,7 @@ from pathlib import Path
 
 ```
 import datetime
-from featurologists.data.load_split import load_data_csv, split_by_invoice_date
+from customer_segmentation_toolkit.data.load_split import load_data_csv, split_by_invoice_date
 
 ONLINEOFFLINE_DATE_SPLIT = datetime.date(2011,10,1)
 
@@ -60,8 +65,8 @@ print(f'Output data saved to {OUTPUT}: {[p.name for p in Path(OUTPUT).iterdir()]
 ### 02. Clean dataset rows
 
 ```
-from featurologists.data.load_split import load_data_csv
-from featurologists.data.clean_rows import clean_data_rows
+from customer_segmentation_toolkit.data.load_split import load_data_csv
+from customer_segmentation_toolkit.data.clean_rows import clean_data_rows
 
 # Loading raw offline dataset'
 df = load_data_csv('../data/output/01_data_split_offline_online/no_live_data.csv')
@@ -93,8 +98,8 @@ print(f'Output data saved to {OUTPUT}: {[p.name for p in Path(OUTPUT).iterdir()]
 
 ```
 import datetime
-from featurologists.data.load_split import load_data_csv
-from featurologists.data.analyse_purchases import build_product_list
+from customer_segmentation_toolkit.data.load_split import load_data_csv
+from customer_segmentation_toolkit.data.analyse_purchases import build_product_list
 
 N_PURCHASE_CLUSTERS = 5
 TRAINTEST_DATE_SPLIT = datetime.date(2011,8,1)
@@ -121,7 +126,7 @@ print('...')
 
 
 ```
-from featurologists.data.analyse_purchases import build_keywords_matrix
+from customer_segmentation_toolkit.data.analyse_purchases import build_keywords_matrix
 
 # Building keywords count matrix
 THRESHOLD = [0, 1, 2, 3, 5, 10]
@@ -149,7 +154,7 @@ print(matrix.head())
 
 
 ```
-from featurologists.data.analyse_purchases import compute_purchase_clusters
+from customer_segmentation_toolkit.data.analyse_purchases import compute_purchase_clusters
 
 # Computing purchases clusters via Kmeans
 clusters = compute_purchase_clusters(matrix, N_PURCHASE_CLUSTERS)
@@ -158,17 +163,17 @@ print(pd.Series(clusters).value_counts())
 ```
 
     Built purchase clusters:
-    2    1117
-    3     911
+    1    1117
+    4     911
     0     638
-    1     566
-    4     430
+    2     566
+    3     430
     dtype: int64
 
 
 ```
 from sklearn.metrics import silhouette_samples, silhouette_score
-from featurologists.data.analyse_purchases import plot_silhouette
+from customer_segmentation_toolkit.data.analyse_purchases import plot_silhouette
 
 silhouette_avg = silhouette_score(matrix, clusters)
 sample_silhouette_values = silhouette_samples(matrix, clusters)
@@ -177,11 +182,11 @@ plot_silhouette(N_PURCHASE_CLUSTERS, [-0.07, 0.33], len(matrix), sample_silhouet
 ```
 
 
-![svg](docs/images/output_14_0.svg)
+![svg](docs/images/output_15_0.svg)
 
 
 ```
-from featurologists.data.analyse_purchases import add_purchase_clusters_info
+from customer_segmentation_toolkit.data.analyse_purchases import add_purchase_clusters_info
 
 # Constructing the result DataFrame
 df_with_clusters = add_purchase_clusters_info(df_cleaned, clusters, N_PURCHASE_CLUSTERS)
@@ -196,7 +201,7 @@ print(f'Columns: {list(df_with_clusters.columns)}')
 
 
 ```
-from featurologists.data.load_split import split_by_invoice_date
+from customer_segmentation_toolkit.data.load_split import split_by_invoice_date
 
 # Splitting the new dataset (offline + cluster info) to train+test
 df_offline_train, df_offline_test = split_by_invoice_date(df_with_clusters, TRAINTEST_DATE_SPLIT)
@@ -230,7 +235,7 @@ print(f'Output data saved to {OUTPUT}: {[p.name for p in Path(OUTPUT).iterdir()]
 ### 04. Analyse customer categories
 
 ```
-from featurologists.data.load_split import load_data_csv
+from customer_segmentation_toolkit.data.load_split import load_data_csv
 
 N_CUSTOMER_CLUSTERS = 11
 SELECTED_CUSTOMERS_CATEG_THRESHOLD = 40
@@ -247,23 +252,23 @@ print('...')
 
     Loaded purchase clusters data of shape: (10054, 9)
       CustomerID  InvoiceNo  Basket Price  categ_0  categ_1  categ_2  categ_3  \
-    0      12347     537626        711.79   291.84     23.4    83.40    19.80   
-    1      12347     542237        475.39   168.75     55.9    53.10    28.44   
-    2      12347     549222        636.25   349.35     70.8    71.10    30.00   
-    3      12347     556201        382.52    94.30     21.0    78.06    20.40   
-    4      12348     539318        892.80   344.40    439.2     0.00   109.20   
+    0      12347     537626        711.79    83.40   187.20   293.35   124.44   
+    1      12347     542237        475.39    53.10   168.75   169.20     0.00   
+    2      12347     549222        636.25    71.10   369.15   115.00     0.00   
+    3      12347     556201        382.52    78.06    74.40   168.76    19.90   
+    4      12348     539318        892.80     0.00   414.00     0.00     0.00   
     
        categ_4                   InvoiceDate  
-    0   293.35 2010-12-07 14:57:00.000001024  
-    1   169.20 2011-01-26 14:29:59.999999744  
-    2   115.00 2011-04-07 10:42:59.999999232  
-    3   168.76 2011-06-09 13:01:00.000000256  
-    4     0.00 2010-12-16 19:09:00.000000000  
+    0    23.40 2010-12-07 14:57:00.000001024  
+    1    84.34 2011-01-26 14:29:59.999999744  
+    2    81.00 2011-04-07 10:42:59.999999232  
+    3    41.40 2011-06-09 13:01:00.000000256  
+    4   478.80 2010-12-16 19:09:00.000000000  
     ...
 
 
 ```
-from featurologists.data.analyse_customers import build_transactions_per_user
+from customer_segmentation_toolkit.data.analyse_customers import build_transactions_per_user
 
 # Building transactions per user
 transactions_per_user = build_transactions_per_user(basket_price, n_purchase_clusters=N_PURCHASE_CLUSTERS)
@@ -274,23 +279,23 @@ print('...')
 
     Built transactions per user, shape: (3143, 13)
       CustomerID  count     min     max        mean      sum    categ_0  \
-    0      12347      4  382.52  711.79  551.487500  2205.95  40.990956   
-    1      12348      3  227.44  892.80  495.746667  1487.24  49.380060   
-    2      12350      1  334.40  334.40  334.400000   334.40  60.406699   
-    3      12352      4  144.35  840.30  360.370000  1441.48  85.882565   
-    4      12353      1   89.00   89.00   89.000000    89.00  80.112360   
+    0      12347      4  382.52  711.79  551.487500  2205.95  12.949523   
+    1      12348      3  227.44  892.80  495.746667  1487.24   0.000000   
+    2      12350      1  334.40  334.40  334.400000   334.40  27.900718   
+    3      12352      4  144.35  840.30  360.370000  1441.48   3.683714   
+    4      12353      1   89.00   89.00   89.000000    89.00  19.887640   
     
          categ_1    categ_2    categ_3    categ_4  LastPurchase  FirstPurchase  
-    0   7.756295  12.949523   4.471543  33.831682            52            236  
-    1  39.097926   0.000000  11.522014   0.000000           117            227  
-    2  11.692584  27.900718   0.000000   0.000000           179            179  
-    3   0.707606   3.683714   3.954269   5.771846           131            165  
-    4   0.000000  19.887640   0.000000   0.000000            73             73  
+    0  36.242889  33.831682   6.543213  10.432693            52            236  
+    1  54.059869   0.000000   0.000000  45.940131           117            227  
+    2  60.406699   0.000000   0.000000  11.692584           179            179  
+    3  77.977495   5.771846  11.859339   0.707606           131            165  
+    4  13.033708   0.000000  67.078652   0.000000            73             73  
     ...
 
 
 ```
-from featurologists.data.analyse_customers import (
+from customer_segmentation_toolkit.data.analyse_customers import (
     plot_customers_pca,
     convert_customers_df_to_np,
     analyse_customers_pca,
@@ -304,11 +309,11 @@ plot_customers_pca(matrix, pca)
 ```
 
 
-![svg](docs/images/output_21_0.svg)
+![svg](docs/images/output_22_0.svg)
 
 
 ```
-from featurologists.data.analyse_customers import compute_customer_clusters
+from customer_segmentation_toolkit.data.analyse_customers import compute_customer_clusters
 
 # Computing customers clusters via Kmeans
 clusters_clients = compute_customer_clusters(scaled_matrix, N_CUSTOMER_CLUSTERS)
@@ -320,23 +325,23 @@ display(pd.Series(clusters_clients).value_counts())
 
 
 
-    0     1169
-    5      480
-    1      364
-    9      252
-    10     235
-    3      230
-    7      206
-    6      157
-    2       33
-    4       10
-    8        7
+    7     1186
+    6      475
+    0      305
+    3      276
+    8      239
+    9      235
+    1      226
+    4      152
+    2       32
+    5       10
+    10       7
     dtype: int64
 
 
 ```
 from sklearn.metrics import silhouette_samples, silhouette_score
-from featurologists.data.analyse_purchases import plot_silhouette
+from customer_segmentation_toolkit.data.analyse_purchases import plot_silhouette
 
 silhouette_avg = silhouette_score(scaled_matrix, clusters_clients)
 sample_silhouette_values = silhouette_samples(scaled_matrix, clusters_clients)
@@ -346,22 +351,22 @@ plot_silhouette(N_CUSTOMER_CLUSTERS, [-0.15, 0.55], len(scaled_matrix), sample_s
 ```
 
 
-![svg](docs/images/output_23_0.svg)
+![svg](docs/images/output_24_0.svg)
 
 
 ```
-from featurologists.data.analyse_customers import plot_customer_categories
+from customer_segmentation_toolkit.data.analyse_customers import plot_customer_categories
 
 # Plotting customers categories
 plot_customer_categories(scaled_matrix, clusters_clients, N_CUSTOMER_CLUSTERS)
 ```
 
 
-![svg](docs/images/output_24_0.svg)
+![svg](docs/images/output_25_0.svg)
 
 
 ```
-from featurologists.data.analyse_customers import add_customer_clusters_info
+from customer_segmentation_toolkit.data.analyse_customers import add_customer_clusters_info
 
 # Constructing the result dataset
 merged_df = add_customer_clusters_info(transactions_per_user, clusters_clients)
@@ -376,7 +381,7 @@ print(f'Columns: {list(merged_df.columns)}')
 
 
 ```
-from featurologists.data.analyse_customers import compute_aggregated_customer_clusters_info
+from customer_segmentation_toolkit.data.analyse_customers import compute_aggregated_customer_clusters_info
 
 # Constructing the aggregated cluster info dataset
 selected_customers_df = compute_aggregated_customer_clusters_info(merged_df, N_PURCHASE_CLUSTERS, N_CUSTOMER_CLUSTERS,
