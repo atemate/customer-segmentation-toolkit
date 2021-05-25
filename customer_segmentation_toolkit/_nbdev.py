@@ -35,7 +35,7 @@ modules = ["data_zoo.py",
            "analyse_purchases.py",
            "analyse_customers.py"]
 
-doc_url = "https://artemlops.github.io/customer-segmentation-toolkit/customer_segmentation_toolkit/"
+doc_url = "https://artemlops.github.io/customer-segmentation-toolkit/customer-segmentation-toolkit/"
 
 git_url = "https://github.com/artemlops/customer-segmentation-toolkit/tree/master/"
 
