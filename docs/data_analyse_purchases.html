@@ -61,7 +61,7 @@ nb_path: "nbs/03_data_analyse_purchases.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="build_product_list" class="doc_header"><code>build_product_list</code><a href="https://github.com/artemlops/featurologists/tree/master/featurologists/data/analyse_purchases.py#L56" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>build_product_list</code>(<strong><code>df</code></strong>:<code>DataFrame</code>)</p>
+<h4 id="build_product_list" class="doc_header"><code>build_product_list</code><a href="https://github.com/artemlops/customer-segmentation-toolkit/tree/master/customer_segmentation_toolkit/data/analyse_purchases.py#L56" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>build_product_list</code>(<strong><code>df</code></strong>:<code>DataFrame</code>)</p>
 </blockquote>
 
 </div>
@@ -92,7 +92,7 @@ nb_path: "nbs/03_data_analyse_purchases.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="plot_product_list_histogram" class="doc_header"><code>plot_product_list_histogram</code><a href="https://github.com/artemlops/featurologists/tree/master/featurologists/data/analyse_purchases.py#L80" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>plot_product_list_histogram</code>(<strong><code>list_products</code></strong>)</p>
+<h4 id="plot_product_list_histogram" class="doc_header"><code>plot_product_list_histogram</code><a href="https://github.com/artemlops/customer-segmentation-toolkit/tree/master/customer_segmentation_toolkit/data/analyse_purchases.py#L80" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>plot_product_list_histogram</code>(<strong><code>list_products</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -119,7 +119,7 @@ nb_path: "nbs/03_data_analyse_purchases.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">featurologists.data.load_split</span> <span class="kn">import</span> <span class="n">load_data_csv</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">customer_segmentation_toolkit.data.load_split</span> <span class="kn">import</span> <span class="n">load_data_csv</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">load_data_csv</span><span class="p">(</span><span class="s1">&#39;../data/output/02_data_clean_rows/no_live_data__cleaned.csv&#39;</span><span class="p">)</span>
 <span class="n">list_products</span> <span class="o">=</span> <span class="n">build_product_list</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
@@ -178,7 +178,7 @@ nb_path: "nbs/03_data_analyse_purchases.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="build_keywords_matrix" class="doc_header"><code>build_keywords_matrix</code><a href="https://github.com/artemlops/featurologists/tree/master/featurologists/data/analyse_purchases.py#L101" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>build_keywords_matrix</code>(<strong><code>df</code></strong>:<code>DataFrame</code>, <strong><code>list_products</code></strong>:<code>List</code>[<code>str</code>], <strong><code>threshold</code></strong>:<code>List</code>[<code>int</code>]=<em><code>(0, 1, 2, 3, 5, 10)</code></em>)</p>
+<h4 id="build_keywords_matrix" class="doc_header"><code>build_keywords_matrix</code><a href="https://github.com/artemlops/customer-segmentation-toolkit/tree/master/customer_segmentation_toolkit/data/analyse_purchases.py#L101" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>build_keywords_matrix</code>(<strong><code>df</code></strong>:<code>DataFrame</code>, <strong><code>list_products</code></strong>:<code>List</code>[<code>str</code>], <strong><code>threshold</code></strong>:<code>List</code>[<code>int</code>]=<em><code>(0, 1, 2, 3, 5, 10)</code></em>)</p>
 </blockquote>
 
 </div>
@@ -209,7 +209,7 @@ nb_path: "nbs/03_data_analyse_purchases.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="display_keywords_matrix" class="doc_header"><code>display_keywords_matrix</code><a href="https://github.com/artemlops/featurologists/tree/master/featurologists/data/analyse_purchases.py#L136" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>display_keywords_matrix</code>(<strong><code>X</code></strong>:<code>DataFrame</code>, <strong><code>threshold</code></strong>:<code>List</code>[<code>int</code>]=<em><code>(0, 1, 2, 3, 5, 10)</code></em>)</p>
+<h4 id="display_keywords_matrix" class="doc_header"><code>display_keywords_matrix</code><a href="https://github.com/artemlops/customer-segmentation-toolkit/tree/master/customer_segmentation_toolkit/data/analyse_purchases.py#L136" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>display_keywords_matrix</code>(<strong><code>X</code></strong>:<code>DataFrame</code>, <strong><code>threshold</code></strong>:<code>List</code>[<code>int</code>]=<em><code>(0, 1, 2, 3, 5, 10)</code></em>)</p>
 </blockquote>
 
 </div>
@@ -469,7 +469,7 @@ nb_path: "nbs/03_data_analyse_purchases.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="compute_purchase_clusters" class="doc_header"><code>compute_purchase_clusters</code><a href="https://github.com/artemlops/featurologists/tree/master/featurologists/data/analyse_purchases.py#L152" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>compute_purchase_clusters</code>(<strong><code>matrix</code></strong>:<code>ndarray</code>, <strong><code>n_clusters</code></strong>:<code>int</code>)</p>
+<h4 id="compute_purchase_clusters" class="doc_header"><code>compute_purchase_clusters</code><a href="https://github.com/artemlops/customer-segmentation-toolkit/tree/master/customer_segmentation_toolkit/data/analyse_purchases.py#L152" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>compute_purchase_clusters</code>(<strong><code>matrix</code></strong>:<code>ndarray</code>, <strong><code>n_clusters</code></strong>:<code>int</code>)</p>
 </blockquote>
 
 </div>
@@ -585,7 +585,7 @@ nb_path: "nbs/03_data_analyse_purchases.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="plot_silhouette" class="doc_header"><code>plot_silhouette</code><a href="https://github.com/artemlops/featurologists/tree/master/featurologists/data/analyse_purchases.py#L167" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>plot_silhouette</code>(<strong><code>n_clusters</code></strong>, <strong><code>lim_x</code></strong>, <strong><code>mat_size</code></strong>, <strong><code>sample_silhouette_values</code></strong>, <strong><code>clusters</code></strong>)</p>
+<h4 id="plot_silhouette" class="doc_header"><code>plot_silhouette</code><a href="https://github.com/artemlops/customer-segmentation-toolkit/tree/master/customer_segmentation_toolkit/data/analyse_purchases.py#L167" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>plot_silhouette</code>(<strong><code>n_clusters</code></strong>, <strong><code>lim_x</code></strong>, <strong><code>mat_size</code></strong>, <strong><code>sample_silhouette_values</code></strong>, <strong><code>clusters</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -835,7 +835,7 @@ nb_path: "nbs/03_data_analyse_purchases.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="add_purchase_clusters_info" class="doc_header"><code>add_purchase_clusters_info</code><a href="https://github.com/artemlops/featurologists/tree/master/featurologists/data/analyse_purchases.py#L198" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>add_purchase_clusters_info</code>(<strong><code>df</code></strong>:<code>DataFrame</code>, <strong><code>clusters</code></strong>:<code>ndarray</code>, <strong><code>n_clusters</code></strong>:<code>int</code>)</p>
+<h4 id="add_purchase_clusters_info" class="doc_header"><code>add_purchase_clusters_info</code><a href="https://github.com/artemlops/customer-segmentation-toolkit/tree/master/customer_segmentation_toolkit/data/analyse_purchases.py#L198" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>add_purchase_clusters_info</code>(<strong><code>df</code></strong>:<code>DataFrame</code>, <strong><code>clusters</code></strong>:<code>ndarray</code>, <strong><code>n_clusters</code></strong>:<code>int</code>)</p>
 </blockquote>
 
 </div>

@@ -9,7 +9,7 @@ The work is done with the help of the [nbdev](https://nbdev.fast.ai/) tool, whic
 
 ## Installation
 
-`pip install -U git+https://github.com/artemlops/featurologists.git@master`
+`pip install -U git+https://github.com/artemlops/customer-segmentation-toolkit.git@master`
 
 ## Usage
 
@@ -22,7 +22,7 @@ from pathlib import Path
 
 ```
 import datetime
-from featurologists.data.load_split import load_data_csv, split_by_invoice_date
+from customer_segmentation_toolkit.data.load_split import load_data_csv, split_by_invoice_date
 
 ONLINEOFFLINE_DATE_SPLIT = datetime.date(2011,10,1)
 
@@ -65,8 +65,8 @@ print(f'Output data saved to {OUTPUT}: {[p.name for p in Path(OUTPUT).iterdir()]
 ### 02. Clean dataset rows
 
 ```
-from featurologists.data.load_split import load_data_csv
-from featurologists.data.clean_rows import clean_data_rows
+from customer_segmentation_toolkit.data.load_split import load_data_csv
+from customer_segmentation_toolkit.data.clean_rows import clean_data_rows
 
 # Loading raw offline dataset'
 df = load_data_csv('../data/output/01_data_split_offline_online/no_live_data.csv')
@@ -98,8 +98,8 @@ print(f'Output data saved to {OUTPUT}: {[p.name for p in Path(OUTPUT).iterdir()]
 
 ```
 import datetime
-from featurologists.data.load_split import load_data_csv
-from featurologists.data.analyse_purchases import build_product_list
+from customer_segmentation_toolkit.data.load_split import load_data_csv
+from customer_segmentation_toolkit.data.analyse_purchases import build_product_list
 
 N_PURCHASE_CLUSTERS = 5
 TRAINTEST_DATE_SPLIT = datetime.date(2011,8,1)
@@ -126,7 +126,7 @@ print('...')
 
 
 ```
-from featurologists.data.analyse_purchases import build_keywords_matrix
+from customer_segmentation_toolkit.data.analyse_purchases import build_keywords_matrix
 
 # Building keywords count matrix
 THRESHOLD = [0, 1, 2, 3, 5, 10]
@@ -154,7 +154,7 @@ print(matrix.head())
 
 
 ```
-from featurologists.data.analyse_purchases import compute_purchase_clusters
+from customer_segmentation_toolkit.data.analyse_purchases import compute_purchase_clusters
 
 # Computing purchases clusters via Kmeans
 clusters = compute_purchase_clusters(matrix, N_PURCHASE_CLUSTERS)
@@ -173,7 +173,7 @@ print(pd.Series(clusters).value_counts())
 
 ```
 from sklearn.metrics import silhouette_samples, silhouette_score
-from featurologists.data.analyse_purchases import plot_silhouette
+from customer_segmentation_toolkit.data.analyse_purchases import plot_silhouette
 
 silhouette_avg = silhouette_score(matrix, clusters)
 sample_silhouette_values = silhouette_samples(matrix, clusters)
@@ -186,7 +186,7 @@ plot_silhouette(N_PURCHASE_CLUSTERS, [-0.07, 0.33], len(matrix), sample_silhouet
 
 
 ```
-from featurologists.data.analyse_purchases import add_purchase_clusters_info
+from customer_segmentation_toolkit.data.analyse_purchases import add_purchase_clusters_info
 
 # Constructing the result DataFrame
 df_with_clusters = add_purchase_clusters_info(df_cleaned, clusters, N_PURCHASE_CLUSTERS)
@@ -201,7 +201,7 @@ print(f'Columns: {list(df_with_clusters.columns)}')
 
 
 ```
-from featurologists.data.load_split import split_by_invoice_date
+from customer_segmentation_toolkit.data.load_split import split_by_invoice_date
 
 # Splitting the new dataset (offline + cluster info) to train+test
 df_offline_train, df_offline_test = split_by_invoice_date(df_with_clusters, TRAINTEST_DATE_SPLIT)
@@ -235,7 +235,7 @@ print(f'Output data saved to {OUTPUT}: {[p.name for p in Path(OUTPUT).iterdir()]
 ### 04. Analyse customer categories
 
 ```
-from featurologists.data.load_split import load_data_csv
+from customer_segmentation_toolkit.data.load_split import load_data_csv
 
 N_CUSTOMER_CLUSTERS = 11
 SELECTED_CUSTOMERS_CATEG_THRESHOLD = 40
@@ -268,7 +268,7 @@ print('...')
 
 
 ```
-from featurologists.data.analyse_customers import build_transactions_per_user
+from customer_segmentation_toolkit.data.analyse_customers import build_transactions_per_user
 
 # Building transactions per user
 transactions_per_user = build_transactions_per_user(basket_price, n_purchase_clusters=N_PURCHASE_CLUSTERS)
@@ -295,7 +295,7 @@ print('...')
 
 
 ```
-from featurologists.data.analyse_customers import (
+from customer_segmentation_toolkit.data.analyse_customers import (
     plot_customers_pca,
     convert_customers_df_to_np,
     analyse_customers_pca,
@@ -313,7 +313,7 @@ plot_customers_pca(matrix, pca)
 
 
 ```
-from featurologists.data.analyse_customers import compute_customer_clusters
+from customer_segmentation_toolkit.data.analyse_customers import compute_customer_clusters
 
 # Computing customers clusters via Kmeans
 clusters_clients = compute_customer_clusters(scaled_matrix, N_CUSTOMER_CLUSTERS)
@@ -341,7 +341,7 @@ display(pd.Series(clusters_clients).value_counts())
 
 ```
 from sklearn.metrics import silhouette_samples, silhouette_score
-from featurologists.data.analyse_purchases import plot_silhouette
+from customer_segmentation_toolkit.data.analyse_purchases import plot_silhouette
 
 silhouette_avg = silhouette_score(scaled_matrix, clusters_clients)
 sample_silhouette_values = silhouette_samples(scaled_matrix, clusters_clients)
@@ -355,7 +355,7 @@ plot_silhouette(N_CUSTOMER_CLUSTERS, [-0.15, 0.55], len(scaled_matrix), sample_s
 
 
 ```
-from featurologists.data.analyse_customers import plot_customer_categories
+from customer_segmentation_toolkit.data.analyse_customers import plot_customer_categories
 
 # Plotting customers categories
 plot_customer_categories(scaled_matrix, clusters_clients, N_CUSTOMER_CLUSTERS)
@@ -366,7 +366,7 @@ plot_customer_categories(scaled_matrix, clusters_clients, N_CUSTOMER_CLUSTERS)
 
 
 ```
-from featurologists.data.analyse_customers import add_customer_clusters_info
+from customer_segmentation_toolkit.data.analyse_customers import add_customer_clusters_info
 
 # Constructing the result dataset
 merged_df = add_customer_clusters_info(transactions_per_user, clusters_clients)
@@ -381,7 +381,7 @@ print(f'Columns: {list(merged_df.columns)}')
 
 
 ```
-from featurologists.data.analyse_customers import compute_aggregated_customer_clusters_info
+from customer_segmentation_toolkit.data.analyse_customers import compute_aggregated_customer_clusters_info
 
 # Constructing the aggregated cluster info dataset
 selected_customers_df = compute_aggregated_customer_clusters_info(merged_df, N_PURCHASE_CLUSTERS, N_CUSTOMER_CLUSTERS,

@@ -11,7 +11,7 @@ clean_nbs:
 	nbdev_clean_nbs
 
 build: $(SRC)
-	rm -r ./featurologists
+	rm -r ./customer_segmentation_toolkit
 	nbdev_build_lib
 
 sync:
