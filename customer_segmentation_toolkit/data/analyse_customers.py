@@ -203,5 +203,5 @@ def compute_aggregated_customer_clusters_info(
 # Cell
 
 # TODO: plot radarchart
-# I'm getting a weird error:
-# ValueError: The number of FixedLocator locations (6), usually from a call to set_ticks, does not match the number of ticklabels (5).
+# Artem Y: I'm getting a weird error:
+#   ValueError: The number of FixedLocator locations (6), usually from a call to set_ticks, does not match the number of ticklabels (5).
