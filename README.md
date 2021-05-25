@@ -2,10 +2,12 @@
 > Data transformations toolkit made by Team #2 for the <a href='https://github.com/mlopscommunity/engineering.labs/tree/master/Lab2_Feature_Store_for_ML'>MLOps Engineering Lab #2</a> "Feature Store for ML".
 
 
-- Original notebook: [Customer segmentation](https://www.kaggle.com/fabiendaniel/customer-segmentation) by F. Daniel (September 2017) (saved to `../data/customer-segmentation.ipynb`).
-- Original dataset: [E-Commerce data: Actual transactions from UK retailer](https://www.kaggle.com/carrie1/ecommerce-data) (saved to `../data/data.csv`).
+- Documentation: https://artemlops.github.io/customer-segmentation-toolkit/
 
-The work is done with the help of the [nbdev](https://nbdev.fast.ai/) tool, which allows you to develop a python library in Jupyter Notebooks, putting all your code, tests and documentation in one place.
+- Original notebook: [Customer segmentation](https://www.kaggle.com/fabiendaniel/customer-segmentation) by F. Daniel (September 2017) (saved to `data/customer-segmentation.ipynb`).
+- Original dataset: [E-Commerce data: Actual transactions from UK retailer](https://www.kaggle.com/carrie1/ecommerce-data) (saved to `data/data.csv`).
+
+- The work is done with the help of the [nbdev](https://nbdev.fast.ai/) tool, which allows you to develop a python library in Jupyter Notebooks, putting all your code, tests and documentation in one place.
 
 ## Installation
 
