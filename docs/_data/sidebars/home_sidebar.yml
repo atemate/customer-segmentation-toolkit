@@ -14,16 +14,16 @@ entries:
       url: data_zoo.html
     - output: web,pdf
       title: Load and split dataset
-      url: data_split_offline_online.html
+      url: split_offline_online.html
     - output: web,pdf
       title: Clean dataset rows
-      url: data_clean_rows.html
+      url: clean_rows.html
     - output: web,pdf
       title: Analyse purchases
-      url: data_analyse_purchases.html
+      url: analyse_purchases.html
     - output: web,pdf
       title: Analyse customers
-      url: data_analyse_customers.html
+      url: analyse_customers.html
     output: web
     title: customer_segmentation_toolkit
   output: web
