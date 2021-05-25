@@ -414,13 +414,15 @@ print(f'Output data saved to {OUTPUT}: {[p.name for p in Path(OUTPUT).iterdir()]
 
 ---
 
-### 05. Prepare dataset for training
+### 05. Download dataset and use it for training
 
 ```
+from customer_segmentation_toolkit.data_zoo import download_data_csv
 from sklearn.model_selection import train_test_split
 
-INPUT = '../data/output/04_data_analyse_customers'
-selected_customers = pd.read_csv(f'{INPUT}/no_live_data__cleaned__purchase_clusters__train__customer_clusters.csv')
+# Download dataset from the data_zoo:
+csv = 'no_live_data__cleaned__purchase_clusters__train__customer_clusters.csv'
+selected_customers: pd.DataFrame = download_data_csv(f'data/output/04_data_analyse_customers/{csv}')
 
 X = selected_customers[['mean', 'categ_0', 'categ_1', 'categ_2', 'categ_3', 'categ_4' ]]
 Y = selected_customers['cluster']
