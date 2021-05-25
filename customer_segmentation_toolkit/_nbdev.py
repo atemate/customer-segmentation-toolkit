@@ -2,7 +2,10 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"load_data_csv": "01_data_split_offline_online.ipynb",
+index = {"download_data_csv": "00_data_zoo.ipynb",
+         "BASE_URL": "00_data_zoo.ipynb",
+         "SUPPORTED_SUFFIXES": "00_data_zoo.ipynb",
+         "load_data_csv": "01_data_split_offline_online.ipynb",
          "split_by_invoice_date": "01_data_split_offline_online.ipynb",
          "DATE_SPLIT": "01_data_split_offline_online.ipynb",
          "clean_drop_na": "02_data_clean_rows.ipynb",
@@ -26,7 +29,8 @@ index = {"load_data_csv": "01_data_split_offline_online.ipynb",
          "add_customer_clusters_info": "04_data_analyse_customers.ipynb",
          "compute_aggregated_customer_clusters_info": "04_data_analyse_customers.ipynb"}
 
-modules = ["data/load_split.py",
+modules = ["data_zoo.py",
+           "data/load_split.py",
            "data/clean_rows.py",
            "data/analyse_purchases.py",
            "data/analyse_customers.py"]

@@ -10,6 +10,9 @@ entries:
       title: Overview
       url: /
     - output: web,pdf
+      title: Data Zoo
+      url: data_zoo.html
+    - output: web,pdf
       title: Load and split dataset
       url: data_split_offline_online.html
     - output: web,pdf

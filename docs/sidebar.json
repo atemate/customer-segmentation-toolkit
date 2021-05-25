@@ -1,6 +1,7 @@
 {
   "customer_segmentation_toolkit": {
     "Overview": "/",
+    "Data Zoo": "data_zoo.html",
     "Load and split dataset": "data_split_offline_online.html",
     "Clean dataset rows": "data_clean_rows.html",
     "Analyse purchases": "data_analyse_purchases.html",
