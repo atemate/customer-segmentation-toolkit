@@ -1,6 +1,11 @@
-# Featurologists
-> Data transformations toolkit made by team 2 at Engineering Labs #2 "Feature Store for ML"
+# Customer segmentation toolkit
+> Data transformations toolkit made by Team #2 for the <a href='https://github.com/mlopscommunity/engineering.labs/tree/master/Lab2_Feature_Store_for_ML'>MLOps Engineering Lab #2</a> "Feature Store for ML".
 
+
+- Original notebook: [Customer segmentation](https://www.kaggle.com/fabiendaniel/customer-segmentation) by F. Daniel (September 2017) (saved to `../data/customer-segmentation.ipynb`).
+- Original dataset: [E-Commerce data: Actual transactions from UK retailer](https://www.kaggle.com/carrie1/ecommerce-data) (saved to `../data/data.csv`).
+
+The work is done with the help of the [nbdev](https://nbdev.fast.ai/) tool, which allows you to develop a python library in Jupyter Notebooks, putting all your code, tests and documentation in one place.
 
 ## Installation
 
@@ -177,7 +182,7 @@ plot_silhouette(N_PURCHASE_CLUSTERS, [-0.07, 0.33], len(matrix), sample_silhouet
 ```
 
 
-![svg](docs/images/output_14_0.svg)
+![svg](docs/images/output_15_0.svg)
 
 
 ```
@@ -304,7 +309,7 @@ plot_customers_pca(matrix, pca)
 ```
 
 
-![svg](docs/images/output_21_0.svg)
+![svg](docs/images/output_22_0.svg)
 
 
 ```
@@ -346,7 +351,7 @@ plot_silhouette(N_CUSTOMER_CLUSTERS, [-0.15, 0.55], len(scaled_matrix), sample_s
 ```
 
 
-![svg](docs/images/output_23_0.svg)
+![svg](docs/images/output_24_0.svg)
 
 
 ```
@@ -357,7 +362,7 @@ plot_customer_categories(scaled_matrix, clusters_clients, N_CUSTOMER_CLUSTERS)
 ```
 
 
-![svg](docs/images/output_24_0.svg)
+![svg](docs/images/output_25_0.svg)
 
 
 ```
