@@ -9,7 +9,7 @@ The work is done with the help of the [nbdev](https://nbdev.fast.ai/) tool, whic
 
 ## Installation
 
-`pip install -U customer-segmentation-toolkit.git`
+`pip install -U customer-segmentation-toolkit`
 
 ## Usage
 
