@@ -18,11 +18,12 @@ sync:
 	nbdev_update_lib
 
 docs_serve: docs
+	# hint: first install bundle: `BUNDLE_GEMFILE="docs/Gemfile" bundle install`
 	cd docs && bundle exec jekyll serve
 
 docs: $(SRC)
-	rm -rf docs && mkdir docs
 	nbdev_build_docs
+	touch docs
 
 test:
 	nbdev_test_nbs
