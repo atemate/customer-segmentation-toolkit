@@ -2,6 +2,8 @@
 > Data transformations toolkit made by Team #2 for the <a href='https://github.com/mlopscommunity/engineering.labs/tree/master/Lab2_Feature_Store_for_ML'>MLOps Engineering Lab #2</a> "Feature Store for ML".
 
 
+- Git repo: https://github.com/artemlops/customer-segmentation-toolkit
+
 - Documentation: https://artemlops.github.io/customer-segmentation-toolkit/
 
 - Original notebook: [Customer segmentation](https://www.kaggle.com/fabiendaniel/customer-segmentation) by F. Daniel (September 2017) (saved to `data/customer-segmentation.ipynb`).

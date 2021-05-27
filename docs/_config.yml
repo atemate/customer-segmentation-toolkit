@@ -3,7 +3,7 @@ output: web
 topnav_title: customer_segmentation_toolkit
 site_title: customer_segmentation_toolkit
 company_name: MLOps Community
-description: Customer Segmentation Toolkit: data transformations for the Engineering Lab 2 "Feature Store for ML"
+description: Data transformations for the Engineering Lab2 Feature-Store-for-ML
 # Set to false to disable KaTeX math
 use_math: true
 # Add Google analytics id if you have one and want to use it here
