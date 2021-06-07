@@ -26,13 +26,14 @@ from pathlib import Path
 
 ```
 import datetime
-from customer_segmentation_toolkit.load_split import load_data_csv, split_by_invoice_date
+from customer_segmentation_toolkit.data_zoo import download_data_csv
+from customer_segmentation_toolkit.load_split import split_by_invoice_date
 
 ONLINEOFFLINE_DATE_SPLIT = datetime.date(2011,10,1)
 
-# Loading original dataset
-df = load_data_csv('../data/data.csv')
-print(f'Loaded dataset, shape: {df.shape}')
+# Loading original dataset from the remote data zoo
+df = download_data_csv('/data/data.csv')
+print(f'Downloaded dataset, shape: {df.shape}')
 
 # Splitting dataset to offline and online parts
 df_offline, df_online = split_by_invoice_date(df, ONLINEOFFLINE_DATE_SPLIT)
@@ -72,7 +73,7 @@ print(f'Output data saved to {OUTPUT}: {[p.name for p in Path(OUTPUT).iterdir()]
 from customer_segmentation_toolkit.load_split import load_data_csv
 from customer_segmentation_toolkit.clean_rows import clean_data_rows
 
-# Loading raw offline dataset'
+# Loading raw offline dataset (from a local path)
 df = load_data_csv('../data/output/01_data_split_offline_online/no_live_data.csv')
 print(f'Loaded raw offline dataset, shape: {df.shape}')
 
@@ -167,11 +168,11 @@ print(pd.Series(clusters).value_counts())
 ```
 
     Built purchase clusters:
-    1    1117
-    4     911
-    0     638
-    2     566
-    3     430
+    1    980
+    3    911
+    4    638
+    0    567
+    2    566
     dtype: int64
 
 
@@ -256,18 +257,18 @@ print('...')
 
     Loaded purchase clusters data of shape: (10054, 9)
       CustomerID  InvoiceNo  Basket Price  categ_0  categ_1  categ_2  categ_3  \
-    0      12347     537626        711.79    83.40   187.20   293.35   124.44   
-    1      12347     542237        475.39    53.10   168.75   169.20     0.00   
-    2      12347     549222        636.25    71.10   369.15   115.00     0.00   
-    3      12347     556201        382.52    78.06    74.40   168.76    19.90   
-    4      12348     539318        892.80     0.00   414.00     0.00     0.00   
+    0      12347     537626        711.79   124.44    187.2   293.35    23.40   
+    1      12347     542237        475.39    38.25    130.5   169.20    84.34   
+    2      12347     549222        636.25    38.25    330.9   115.00    81.00   
+    3      12347     556201        382.52    19.90     74.4   168.76    41.40   
+    4      12348     539318        892.80   240.00    174.0     0.00   478.80   
     
        categ_4                   InvoiceDate  
-    0    23.40 2010-12-07 14:57:00.000001024  
-    1    84.34 2011-01-26 14:29:59.999999744  
-    2    81.00 2011-04-07 10:42:59.999999232  
-    3    41.40 2011-06-09 13:01:00.000000256  
-    4   478.80 2010-12-16 19:09:00.000000000  
+    0    83.40 2010-12-07 14:57:00.000001024  
+    1    53.10 2011-01-26 14:29:59.999999744  
+    2    71.10 2011-04-07 10:42:59.999999232  
+    3    78.06 2011-06-09 13:01:00.000000256  
+    4     0.00 2010-12-16 19:09:00.000000000  
     ...
 
 
@@ -283,18 +284,18 @@ print('...')
 
     Built transactions per user, shape: (3143, 13)
       CustomerID  count     min     max        mean      sum    categ_0  \
-    0      12347      4  382.52  711.79  551.487500  2205.95  12.949523   
-    1      12348      3  227.44  892.80  495.746667  1487.24   0.000000   
-    2      12350      1  334.40  334.40  334.400000   334.40  27.900718   
-    3      12352      4  144.35  840.30  360.370000  1441.48   3.683714   
-    4      12353      1   89.00   89.00   89.000000    89.00  19.887640   
+    0      12347      4  382.52  711.79  551.487500  2205.95  10.011106   
+    1      12348      3  227.44  892.80  495.746667  1487.24  21.516366   
+    2      12350      1  334.40  334.40  334.400000   334.40  11.961722   
+    3      12352      4  144.35  840.30  360.370000  1441.48  78.356966   
+    4      12353      1   89.00   89.00   89.000000    89.00  67.078652   
     
          categ_1    categ_2    categ_3    categ_4  LastPurchase  FirstPurchase  
-    0  36.242889  33.831682   6.543213  10.432693            52            236  
-    1  54.059869   0.000000   0.000000  45.940131           117            227  
-    2  60.406699   0.000000   0.000000  11.692584           179            179  
-    3  77.977495   5.771846  11.859339   0.707606           131            165  
-    4  13.033708   0.000000  67.078652   0.000000            73             73  
+    0  32.774995  33.831682  10.432693  12.949523            52            236  
+    1  32.543503   0.000000  45.940131   0.000000           117            227  
+    2  48.444976   0.000000  11.692584  27.900718           179            179  
+    3  11.479868   5.771846   0.707606   3.683714           131            165  
+    4  13.033708   0.000000   0.000000  19.887640            73             73  
     ...
 
 
@@ -329,16 +330,16 @@ display(pd.Series(clusters_clients).value_counts())
 
 
 
-    7     1186
-    6      475
-    0      305
-    3      276
-    8      239
-    9      235
-    1      226
-    4      152
-    2       32
-    5       10
+    2     1170
+    9      432
+    8      369
+    7      275
+    0      255
+    6      233
+    5      208
+    1      152
+    3       32
+    4       10
     10       7
     dtype: int64
 
@@ -365,8 +366,12 @@ from customer_segmentation_toolkit.analyse_customers import plot_customer_catego
 plot_customer_categories(scaled_matrix, clusters_clients, N_CUSTOMER_CLUSTERS)
 ```
 
+    /plain/github/mine/customer-segmentation-toolkit/customer_segmentation_toolkit/analyse_customers.py:157: UserWarning: Tight layout not applied. tight_layout cannot make axes height small enough to accommodate all axes decorations
+      plt.tight_layout()
 
-![svg](docs/images/output_25_0.svg)
+
+
+![svg](docs/images/output_25_1.svg)
 
 
 ```
@@ -437,8 +442,143 @@ X_train.shape, X_test.shape, Y_train.shape, Y_test.shape
 ```
 
 
+    ---------------------------------------------------------------------------
+
+    HTTPError                                 Traceback (most recent call last)
+
+    <ipython-input-28-03ec75640bb1> in <module>
+          4 # Download dataset from the data_zoo:
+          5 csv = 'no_live_data__cleaned__purchase_clusters__train__customer_clusters.csv'
+    ----> 6 selected_customers: pd.DataFrame = download_data_csv(f'data/output/04_data_analyse_customers/{csv}')
+          7 
+          8 X = selected_customers[['mean', 'categ_0', 'categ_1', 'categ_2', 'categ_3', 'categ_4' ]]
 
 
-    ((2514, 6), (629, 6), (2514,), (629,))
+    /plain/github/mine/customer-segmentation-toolkit/customer_segmentation_toolkit/data_zoo.py in download_data_csv(path_relative, base_url)
+         19     url = f'{base_url}/{normpath(path_relative)}'
+         20     logging.info(f"Downloading dataset '{url}'")
+    ---> 21     return pd.read_csv(url)
+    
 
+    ~/.pyenv/versions/3.7.6/lib/python3.7/site-packages/pandas/io/parsers.py in read_csv(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, dialect, error_bad_lines, warn_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options)
+        608     kwds.update(kwds_defaults)
+        609 
+    --> 610     return _read(filepath_or_buffer, kwds)
+        611 
+        612 
+
+
+    ~/.pyenv/versions/3.7.6/lib/python3.7/site-packages/pandas/io/parsers.py in _read(filepath_or_buffer, kwds)
+        460 
+        461     # Create the parser.
+    --> 462     parser = TextFileReader(filepath_or_buffer, **kwds)
+        463 
+        464     if chunksize or iterator:
+
+
+    ~/.pyenv/versions/3.7.6/lib/python3.7/site-packages/pandas/io/parsers.py in __init__(self, f, engine, **kwds)
+        817             self.options["has_index_names"] = kwds["has_index_names"]
+        818 
+    --> 819         self._engine = self._make_engine(self.engine)
+        820 
+        821     def close(self):
+
+
+    ~/.pyenv/versions/3.7.6/lib/python3.7/site-packages/pandas/io/parsers.py in _make_engine(self, engine)
+       1048             )
+       1049         # error: Too many arguments for "ParserBase"
+    -> 1050         return mapping[engine](self.f, **self.options)  # type: ignore[call-arg]
+       1051 
+       1052     def _failover_to_python(self):
+
+
+    ~/.pyenv/versions/3.7.6/lib/python3.7/site-packages/pandas/io/parsers.py in __init__(self, src, **kwds)
+       1865 
+       1866         # open handles
+    -> 1867         self._open_handles(src, kwds)
+       1868         assert self.handles is not None
+       1869         for key in ("storage_options", "encoding", "memory_map", "compression"):
+
+
+    ~/.pyenv/versions/3.7.6/lib/python3.7/site-packages/pandas/io/parsers.py in _open_handles(self, src, kwds)
+       1366             compression=kwds.get("compression", None),
+       1367             memory_map=kwds.get("memory_map", False),
+    -> 1368             storage_options=kwds.get("storage_options", None),
+       1369         )
+       1370 
+
+
+    ~/.pyenv/versions/3.7.6/lib/python3.7/site-packages/pandas/io/common.py in get_handle(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)
+        561         compression=compression,
+        562         mode=mode,
+    --> 563         storage_options=storage_options,
+        564     )
+        565 
+
+
+    ~/.pyenv/versions/3.7.6/lib/python3.7/site-packages/pandas/io/common.py in _get_filepath_or_buffer(filepath_or_buffer, encoding, compression, mode, storage_options)
+        287                 "storage_options passed with file object or non-fsspec file path"
+        288             )
+    --> 289         req = urlopen(filepath_or_buffer)
+        290         content_encoding = req.headers.get("Content-Encoding", None)
+        291         if content_encoding == "gzip":
+
+
+    ~/.pyenv/versions/3.7.6/lib/python3.7/site-packages/pandas/io/common.py in urlopen(*args, **kwargs)
+        193     import urllib.request
+        194 
+    --> 195     return urllib.request.urlopen(*args, **kwargs)
+        196 
+        197 
+
+
+    ~/.pyenv/versions/3.7.6/lib/python3.7/urllib/request.py in urlopen(url, data, timeout, cafile, capath, cadefault, context)
+        220     else:
+        221         opener = _opener
+    --> 222     return opener.open(url, data, timeout)
+        223 
+        224 def install_opener(opener):
+
+
+    ~/.pyenv/versions/3.7.6/lib/python3.7/urllib/request.py in open(self, fullurl, data, timeout)
+        529         for processor in self.process_response.get(protocol, []):
+        530             meth = getattr(processor, meth_name)
+    --> 531             response = meth(req, response)
+        532 
+        533         return response
+
+
+    ~/.pyenv/versions/3.7.6/lib/python3.7/urllib/request.py in http_response(self, request, response)
+        639         if not (200 <= code < 300):
+        640             response = self.parent.error(
+    --> 641                 'http', request, response, code, msg, hdrs)
+        642 
+        643         return response
+
+
+    ~/.pyenv/versions/3.7.6/lib/python3.7/urllib/request.py in error(self, proto, *args)
+        567         if http_err:
+        568             args = (dict, 'default', 'http_error_default') + orig_args
+    --> 569             return self._call_chain(*args)
+        570 
+        571 # XXX probably also want an abstract factory that knows when it makes
+
+
+    ~/.pyenv/versions/3.7.6/lib/python3.7/urllib/request.py in _call_chain(self, chain, kind, meth_name, *args)
+        501         for handler in handlers:
+        502             func = getattr(handler, meth_name)
+    --> 503             result = func(*args)
+        504             if result is not None:
+        505                 return result
+
+
+    ~/.pyenv/versions/3.7.6/lib/python3.7/urllib/request.py in http_error_default(self, req, fp, code, msg, hdrs)
+        647 class HTTPDefaultErrorHandler(BaseHandler):
+        648     def http_error_default(self, req, fp, code, msg, hdrs):
+    --> 649         raise HTTPError(req.full_url, code, msg, hdrs, fp)
+        650 
+        651 class HTTPRedirectHandler(BaseHandler):
+
+
+    HTTPError: HTTP Error 404: Not Found
 
