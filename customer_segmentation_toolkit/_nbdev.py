@@ -5,6 +5,7 @@ __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 index = {"download_data_csv": "00_data_zoo.ipynb",
          "BASE_URL": "00_data_zoo.ipynb",
          "SUPPORTED_SUFFIXES": "00_data_zoo.ipynb",
+         "ENCODING": "00_data_zoo.ipynb",
          "load_data_csv": "01_split_offline_online.ipynb",
          "split_by_invoice_date": "01_split_offline_online.ipynb",
          "DATE_SPLIT": "01_split_offline_online.ipynb",
