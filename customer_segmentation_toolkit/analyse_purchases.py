@@ -11,6 +11,11 @@ import numpy as np
 import nltk
 
 # Cell
+def _prepare_nltk():
+    nltk.download('punkt')
+    nltk.download('averaged_perceptron_tagger')
+
+# Cell
 def _keywords_inventory(dataframe, colonne = 'Description'):
     def is_noun(pos):
         return pos[:2] == 'NN'
@@ -54,6 +59,8 @@ def _keywords_inventory(dataframe, colonne = 'Description'):
 # Cell
 
 def build_product_list(df: pd.DataFrame) -> pd.DataFrame:
+    _prepare_nltk()
+
     df_initial = df
     df_produits = pd.DataFrame(df_initial['Description'].unique()).rename(columns = {0:'Description'})
 
