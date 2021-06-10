@@ -71,8 +71,12 @@ def build_product_list(df: pd.DataFrame, filter_by_number=True) -> pd.DataFrame:
             continue
         if word in ['pink', 'blue', 'tag', 'green', 'orange']:
             continue
-        if filter_by_number and len(word) < 3 or v < 13:
+        if len(word) < 3:
             continue
+
+        if filter_by_number and v < 13:
+            continue
+
         list_products.append([word, v])
     list_products.sort(key = lambda x:x[1], reverse = True)
     return list_products
