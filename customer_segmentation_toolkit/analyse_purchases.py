@@ -58,6 +58,8 @@ def _keywords_inventory(dataframe, colonne = 'Description'):
 
 # Cell
 def build_product_list(df: pd.DataFrame, filter_by_number=True) -> pd.DataFrame:
+    _prepare_nltk()
+
     df_initial = df
     df_produits = pd.DataFrame(df_initial['Description'].unique()).rename(columns = {0:'Description'})
 
