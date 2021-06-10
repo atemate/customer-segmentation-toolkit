@@ -11,6 +11,11 @@ import numpy as np
 import nltk
 
 # Cell
+def _prepare_nltk():
+    nltk.download('punkt')
+    nltk.download('averaged_perceptron_tagger')
+
+# Cell
 def _keywords_inventory(dataframe, colonne = 'Description'):
     def is_noun(pos):
         return pos[:2] == 'NN'
@@ -53,7 +58,7 @@ def _keywords_inventory(dataframe, colonne = 'Description'):
 
 # Cell
 
-def build_product_list(df: pd.DataFrame) -> pd.DataFrame:
+def build_product_list(df: pd.DataFrame, filter_by_number=True) -> pd.DataFrame:
     df_initial = df
     df_produits = pd.DataFrame(df_initial['Description'].unique()).rename(columns = {0:'Description'})
 
@@ -61,14 +66,19 @@ def build_product_list(df: pd.DataFrame) -> pd.DataFrame:
 
     list_products = []
     for k,v in count_keywords.items():
-        #list_products.append([keywords_select[k],v])
-        # XXX: here we also filter out useless ones
         word = keywords_select[k]
+
+        if ('+' in word) or ('/' in word):
+            continue
+
+        if not filter_by_number:
+            # for mini-batch inference, we don't want to filter out small
+            list_products.append([word, v])
+            continue
+
         if word in ['pink', 'blue', 'tag', 'green', 'orange']:
             continue
         if len(word) < 3 or v < 13:
-            continue
-        if ('+' in word) or ('/' in word):
             continue
         list_products.append([word, v])
     list_products.sort(key = lambda x:x[1], reverse = True)
