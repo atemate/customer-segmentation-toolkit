@@ -57,8 +57,7 @@ def _keywords_inventory(dataframe, colonne = 'Description'):
     return category_keys, keywords_roots, keywords_select, count_keywords
 
 # Cell
-
-def build_product_list(df: pd.DataFrame) -> pd.DataFrame:
+def build_product_list(df: pd.DataFrame, filter_by_number=True) -> pd.DataFrame:
     _prepare_nltk()
 
     df_initial = df
@@ -68,15 +67,18 @@ def build_product_list(df: pd.DataFrame) -> pd.DataFrame:
 
     list_products = []
     for k,v in count_keywords.items():
-        #list_products.append([keywords_select[k],v])
-        # XXX: here we also filter out useless ones
         word = keywords_select[k]
-        if word in ['pink', 'blue', 'tag', 'green', 'orange']:
-            continue
-        if len(word) < 3 or v < 13:
-            continue
+
         if ('+' in word) or ('/' in word):
             continue
+        if word in ['pink', 'blue', 'tag', 'green', 'orange']:
+            continue
+        if len(word) < 3:
+            continue
+
+        if filter_by_number and v < 13:
+            continue
+
         list_products.append([word, v])
     list_products.sort(key = lambda x:x[1], reverse = True)
     return list_products
